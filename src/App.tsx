@@ -1,28 +1,25 @@
 import React, { useState } from "react";
 import "./App.css";
-import { ProductDetail } from "./pages/Products/Detail";
-import { ProductList } from "./pages/Products/List";
+
+import { ProductDetail } from './pages/Product/Details'
+import { ProductList } from './pages/Product/List'
 
 function App() {
-  const [productId, setProductId] = useState<number | null>(null);
+  const [productId, setProductId] = useState<number | null>(null)
 
   const onProductDetail = (id: number) => {
-    setProductId(id);
-  };
+    setProductId(id)
+  }
 
   const onBackToList = () => {
-    setProductId(null);
-  };
+    setProductId(null)
+  }
 
   return (
     <div className="App">
-      {productId !== null ? (
-        <ProductDetail id={productId} onBack={onBackToList} />
-      ) : (
-        <ProductList onProductDetail={onProductDetail} />
-      )}
+      {productId !== null ? <ProductDetail onBackToList={onBackToList} id={productId} /> : <ProductList onProductDetail={onProductDetail} />}
     </div>
-  );
+  )
 }
 
 export default App;
